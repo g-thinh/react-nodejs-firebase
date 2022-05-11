@@ -1,0 +1,11 @@
+{
+  "name": "react-node-firebase",
+  "version": "1.0.0",
+  "author": "Gia Thinh Nguyen",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
