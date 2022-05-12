@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import apiRouter from "./routes/api.js";
-
+import "dotenv/config";
 const PORT = process.env.PORT || 3001;
 
 const app = express();
