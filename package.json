@@ -4,6 +4,10 @@
   "author": "Gia Thinh Nguyen",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "server": "yarn workspace server start",
+    "client": "yarn workspace client start"
+  },
   "workspaces": [
     "client",
     "server"
