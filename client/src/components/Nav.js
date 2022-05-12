@@ -1,27 +1,29 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth } from "../context/AuthContext";
-import { signInUser, signOutUser } from "../utils/firebase";
+import { signOutUser } from "../utils/firebase";
 
 export default function Nav() {
   const { user } = useAuth();
+
+  console.log("NavUser", user);
 
   return (
     <StyledNav>
       <Links>
         <h1>My App</h1>
-        <Link href="/">Home</Link>
-        <Link href="/">Another Page</Link>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/">Another Page</StyledLink>
       </Links>
       <Buttons>
         {user && <p>Hello, {user.email}</p>}
         {user ? (
-          <button onClick={() => signOutUser()}>Sign Out</button>
+          <>
+            <StyledLink to="/profile">Profile</StyledLink>
+            <button onClick={() => signOutUser()}>Sign Out</button>
+          </>
         ) : (
-          <button
-            onClick={() => signInUser("gthinh.nguyen@gmail.com", "thinh123")}
-          >
-            Sign In User
-          </button>
+          <StyledLink to="/signin">Sign In</StyledLink>
         )}
       </Buttons>
     </StyledNav>
@@ -35,15 +37,14 @@ const Links = styled.div`
   gap: 12px;
 `;
 
+const StyledLink = styled(Link)`
+  color: white;
+`;
+
 const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
   padding: 24px;
-`;
-
-const Link = styled.a`
-  font-size: 18px;
-  color: white;
 `;
 
 const Buttons = styled.div`

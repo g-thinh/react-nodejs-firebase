@@ -21,13 +21,17 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const database = getDatabase(app);
 
-export function createUser(email, password) {
+export function createUser(name, email, password) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Created user
       const user = userCredential.user;
       console.log("createdUser", user);
-
+      set(ref(database, `/users/${user.uid}`), {
+        name,
+        email,
+        dateCreated: new Date(),
+      });
       // ...
     })
     .catch((error) => {
@@ -43,9 +47,6 @@ export function signInUser(email, password) {
       // Signed in
       const user = userCredential.user;
       console.log("signInUser", user.uid);
-      set(ref(database, `/users/${user.uid}`), {
-        email,
-      });
     })
     .catch((error) => {
       const errorCode = error.code;
