@@ -6,14 +6,12 @@ import { signOutUser } from "../utils/firebase";
 export default function Nav() {
   const { user } = useAuth();
 
-  console.log("NavUser", user);
-
   return (
     <StyledNav>
       <Links>
         <h1>My App</h1>
         <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/">Another Page</StyledLink>
+        {user && <StyledLink to="/feed">Feed</StyledLink>}
       </Links>
       <Buttons>
         {user && <p>Hello, {user.email}</p>}

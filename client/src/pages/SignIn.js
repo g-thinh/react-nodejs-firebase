@@ -11,7 +11,7 @@ export default function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      signInUser(email, password).then(() => navigate("/profile"));
+      signInUser(email, password).then(() => navigate("/feed"));
     } catch (error) {
       console.log("signInUser", error);
     }

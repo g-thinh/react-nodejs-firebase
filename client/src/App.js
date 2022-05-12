@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import styled from "styled-components";
 import SignIn from "./pages/SignIn";
 import Profile from "./pages/Profile";
+import Feed from "./pages/Feed";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
@@ -23,6 +24,15 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/feed"
+              exact
+              element={
+                <ProtectedRoute>
+                  <Feed />
                 </ProtectedRoute>
               }
             />

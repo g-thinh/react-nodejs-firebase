@@ -12,7 +12,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      createUser(name, email, password).then(() => navigate("/profile"));
+      createUser(name, email, password).then(() => navigate("/feed"));
     } catch (error) {
       console.log("createUser", error);
     }
